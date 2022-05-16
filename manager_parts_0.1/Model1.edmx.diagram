@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="992a487c2ea54910b9df38bd228397da" Name="Diagram1">
+        <EntityTypeShape EntityType="parts_managerModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="parts_managerModel.Контер_агенти" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="parts_managerModel.Митниця" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="parts_managerModel.Найменування_товарів" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="parts_managerModel.Поставки_товарів" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="parts_managerModel.Працівники" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="parts_managerModel.Продаж_товарів" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="parts_managerModel.FK_Найменування_товарів_Контер_агенти" ManuallyRouted="false" />
+        <AssociationConnector Association="parts_managerModel.FK_Поставки_товарів_Контер_агенти1" ManuallyRouted="false" />
+        <AssociationConnector Association="parts_managerModel.FK_Продаж_товарів_Контер_агенти" ManuallyRouted="false" />
+        <AssociationConnector Association="parts_managerModel.FK_Митниця_Поставки_товарів" ManuallyRouted="false" />
+        <AssociationConnector Association="parts_managerModel.FK_Митниця_Працівники" ManuallyRouted="false" />
+        <AssociationConnector Association="parts_managerModel.FK_Поставки_товарів_Контер_агенти" ManuallyRouted="false" />
+        <AssociationConnector Association="parts_managerModel.FK_Продаж_товарів_Найменування_товарів" ManuallyRouted="false" />
+        <AssociationConnector Association="parts_managerModel.FK_Поставки_товарів_Працівники" ManuallyRouted="false" />
+        <AssociationConnector Association="parts_managerModel.FK_Продаж_товарів_Працівники" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

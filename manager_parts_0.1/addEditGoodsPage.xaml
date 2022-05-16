@@ -1,0 +1,68 @@
+﻿<Page x:Class="manager_parts_0._1.addEditGoodsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:manager_parts_0._1"
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="addEditGoodsPage"  Background="GreenYellow" Height="800" >
+
+
+
+    <Grid Margin="0,10,0,-0.4">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*" />
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="41*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            
+        
+
+
+
+        </Grid.RowDefinitions>
+
+        <TextBlock  FontSize="15" Text=" Код_товару" Margin="10,12.4,20,18" Grid.Row="1"   />
+        <TextBlock FontSize="15" Text="Назва" Margin="20,17,56,13.4" Grid.Row="2"  />
+        <TextBlock  FontSize="15" Text="Каталожний_номер" Margin="15,6.6,15,21.8" Grid.Row="3"   />
+        <TextBlock  FontSize="15" Text="Одиниця_виміру" Margin="16,3.2,3,1.2" Grid.Row="4"  />
+        <TextBlock  FontSize="15" Text="Вага" Margin="4.8,19,4.2,32.4" Grid.Row="2" Grid.Column="2"  />
+        <TextBlock   FontSize="15" Text="Ціна" Margin="9.8,2.4,30.2,43" Grid.Row="1" Grid.Column="2"  />
+        <TextBlock  FontSize="15" Text=" Країна_виробник" Margin="-4,3.8,45,11.6" Grid.Row="5"  />
+        <TextBlock  FontSize="15" Text="Бренд" Margin="20,15.4,7,38" Grid.Row="6"  />
+        <TextBlock  FontSize="15" Text="Примітка" Margin="18.8,18.8,10.2,35.6" Grid.Row="5" Grid.Column="2"  />
+        <TextBlock  FontSize="15"  Text="Кількість товарів" Margin="235,17.6,4.2,37.8" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <TextBlock   FontSize="15"  Text=" Код постачальника" Margin="4.8,13.2,4.2,31.2" Grid.Row="4" Grid.Column="2" />
+
+
+
+        <TextBox  Text="{Binding Код_товару}" Grid.Column="1" Margin="40,1.4,42.2,56.4" Grid.Row="1" />
+        <TextBox   Text="{Binding Вага}" Grid.Column="3" Margin="19.8,11.6,25,54.2" Grid.Row="2" />
+        <TextBox   Text="{Binding Каталожний_номер}" Grid.Column="1" Margin="45,5.8,37.2,67" Grid.Row="3" />
+        <ComboBox  x:Name="combo1" SelectedItem="{Binding Код_постачальника}" Grid.Column="3" Margin="19.8,13,25,44.8" Grid.Row="4"  />
+        <TextBox   Text="{Binding Назва}" Grid.Column="1" Margin="45,23.6,37.2,49.2" Grid.Row="2" />
+        <TextBox   Text="{Binding Країна_виробник}" Grid.Column="1" Margin="40,4,25.2,73.2" Grid.Row="5" />
+        <TextBox  Text="{Binding Бренд}" Grid.Column="1" Margin="40,3.4,40.2,70.4" Grid.Row="6" />
+        <TextBox   Text="{Binding Ціна}" Grid.Column="3" Margin="6.8,6.4,20,51.4" Grid.Row="1" />
+        <TextBox   Text="{Binding Одиниця_виміру}" Grid.Column="1" Margin="40,8,22.2,69.8" Grid.Row="4" />
+        <TextBox Text="{Binding Кількість_товарів }" Grid.Column="3" Margin="20.8,15.8,25,57" Grid.Row="3"  />
+
+        <Button Content="Зберегти "  Name="BtnSave" Click="BtnSave_Click" Margin="5,25,10,23.6" />
+        <TextBox    Text="{Binding Примітка}" Margin="19.8,35.2,30,25.6" Grid.Column="3" Grid.Row="5" />
+
+    </Grid>
+
+</Page>

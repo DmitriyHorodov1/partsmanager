@@ -1,0 +1,68 @@
+﻿<Page x:Class="manager_parts_0._1.Agent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:manager_parts_0._1"
+      mc:Ignorable="d"
+      Title="Agent"  Width="950" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid  HorizontalAlignment="Right" Margin="0,36,-57.6,-30" Width="1008" Height="479" >
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="350" />
+            <RowDefinition Height="120"/>
+
+
+
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="AgentPage" Margin="0,11,28,10" RenderTransformOrigin="0.5,0.5" AutoGenerateColumns="False" IsReadOnly="True" Grid.RowSpan="2" HorizontalAlignment="Right" Width="958" SelectionChanged="AgentPage_SelectionChanged" >
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.258"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Назва товариства" Binding="{Binding Назва_товариства}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер телефону" Binding="{Binding Номер_телефону}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фізична адресса" Binding="{Binding Фізична_адресса }" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Юридична адресса" Binding="{Binding Юридична_адресса}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="ЄРДПОУ" Binding="{Binding ЄРДПОУ}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="ІНН" Binding="{Binding ІНН}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Елктронна пошта" Binding="{Binding Єлектронна_пошта}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Особливі примітки" Binding="{Binding Особливі_примітки }" Width="*"></DataGridTextColumn>
+
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редагуваати" Name="BtnEdit" Click="BtnEdit_Click" ></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Додати"   HorizontalAlignment="Left" Name="BtnAdd" Click="BtnAdd_Click" Margin="56,18.8,0,51" Width="98" Grid.Row="1"/>
+        <Button Content="Видалити" HorizontalAlignment="Right" Name="BtnDelete" Click="BtnDelete_Click" Margin="0,18.8,54,51" Width="98" Grid.Row="1"/>
+        <TextBlock Text="Пошук" Margin="388,9.8,520,92" Grid.Row="1"/>
+        <ComboBox Name="agentList" Height="30" VerticalAlignment="Top" SelectionChanged="agentList_SelectionChanged" Margin="249,66.8,457,0" Grid.Row="1">
+            <ComboBoxItem>Назва_товариства</ComboBoxItem>
+            <ComboBoxItem>Номер_телефону</ComboBoxItem>
+            <ComboBoxItem>Фізична_адресса</ComboBoxItem>
+            <ComboBoxItem>Юридична_адресса</ComboBoxItem>
+            <ComboBoxItem>ЄРДПОУ</ComboBoxItem>
+            <ComboBoxItem>ІНН</ComboBoxItem>
+            <ComboBoxItem>Єлектронна_пошта</ComboBoxItem>
+            
+
+        </ComboBox>
+        <TextBox Margin="249,28.8,457,59" Grid.Row="1" RenderTransformOrigin="0.496,0.469"   Name="searchValue" />
+        <Button Margin="575,27.8,279,60" Grid.Row="1" Content="Знайти" Name="btn_search" Click="btn_search_Click"  />
+        <Button Margin="575,66.8,279,21" Grid.Row="1" Content="Оновити" Name="btn_reaload" Click="btn_reaload_Click"   />
+        <Button Margin="184,37.8,782,51" Grid.Row="1"  Click="gotoMainPage_click" ></Button>
+    </Grid>
+</Page>

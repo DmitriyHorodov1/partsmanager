@@ -1,0 +1,658 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище parts_managerModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Контер_агенти">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Назва_товариства" Type="nvarchar" MaxLength="150" />
+          <Property Name="Номер_телефону" Type="nvarchar(max)" />
+          <Property Name="Фізична_адресса" Type="nvarchar" MaxLength="50" />
+          <Property Name="Юридична_адресса" Type="nvarchar" MaxLength="50" />
+          <Property Name="ЄРДПОУ" Type="nvarchar(max)" />
+          <Property Name="ІНН" Type="nvarchar(max)" />
+          <Property Name="Єлектронна_пошта" Type="nvarchar" MaxLength="50" />
+          <Property Name="Особливі_примітки" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Митниця">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="int" Nullable="false" />
+          <Property Name="Дата_реєстрації" Type="date" />
+          <Property Name="Код_товару" Type="int" />
+          <Property Name="Код_працівника" Type="int" />
+          <Property Name="Відцоток_додаткової_вартості" Type="int" />
+          <Property Name="Кількість" Type="int" />
+          <Property Name="Строк_зберігання_СТЗ" Type="date" />
+          <Property Name="Номер_рахунку" Type="int" />
+          <Property Name="Cтатус" Type="text" />
+        </EntityType>
+        <EntityType Name="Найменування_товарів">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код_товару" Type="int" />
+          <Property Name="Назва" Type="nvarchar" MaxLength="50" />
+          <Property Name="Каталожний_номер" Type="int" />
+          <Property Name="Ціна" Type="float" />
+          <Property Name="Одиниця_виміру" Type="nvarchar" MaxLength="50" />
+          <Property Name="Вага" Type="float" />
+          <Property Name="Країна_виробник" Type="nvarchar" MaxLength="50" />
+          <Property Name="Бренд" Type="nvarchar" MaxLength="50" />
+          <Property Name="Кількість_товарів" Type="int" />
+          <Property Name="Код_постачальника" Type="int" />
+          <Property Name="Примітка" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Поставки_товарів">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Час_поставки_товару" Type="date" />
+          <Property Name="код_Постачальника" Type="int" />
+          <Property Name="код_Товару" Type="int" />
+          <Property Name="Код_працівника" Type="int" />
+          <Property Name="Кількість" Type="int" />
+          <Property Name="Назва_компанії_перевізника" Type="varchar" MaxLength="50" />
+          <Property Name="Статус_митниці" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Працівники">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ИПБ" Type="text" Nullable="false" />
+          <Property Name="Дата_працевлаштування" Type="date" />
+          <Property Name="Посада" Type="text" />
+          <Property Name="Зарплата" Type="int" />
+          <Property Name="Примітка" Type="text" />
+        </EntityType>
+        <EntityType Name="Продаж_товарів">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Дата_продажу" Type="date" />
+          <Property Name="Код_контрагента" Type="int" />
+          <Property Name="Код_працівника" Type="int" />
+          <Property Name="Код_товару" Type="int" />
+          <Property Name="Кількість" Type="int" />
+          <Property Name="Cтатус_проплати" Type="text" />
+          <Property Name="Вартість_купленого" Type="float" />
+          <Property Name="Cтатус_доставки" Type="text" />
+          <Property Name="Знижка" Type="int" />
+          <Property Name="Коментар" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Митниця_Поставки_товарів">
+          <End Role="Поставки_товарів" Type="Self.Поставки_товарів" Multiplicity="0..1" />
+          <End Role="Митниця" Type="Self.Митниця" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Поставки_товарів">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Митниця">
+              <PropertyRef Name="Код_товару" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Митниця_Працівники">
+          <End Role="Працівники" Type="Self.Працівники" Multiplicity="0..1" />
+          <End Role="Митниця" Type="Self.Митниця" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Працівники">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Митниця">
+              <PropertyRef Name="Код_працівника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Найменування_товарів_Контер_агенти">
+          <End Role="Контер_агенти" Type="Self.Контер_агенти" Multiplicity="0..1" />
+          <End Role="Найменування_товарів" Type="Self.Найменування_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Контер_агенти">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Найменування_товарів">
+              <PropertyRef Name="Код_постачальника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставки_товарів_Контер_агенти">
+          <End Role="Найменування_товарів" Type="Self.Найменування_товарів" Multiplicity="0..1" />
+          <End Role="Поставки_товарів" Type="Self.Поставки_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Найменування_товарів">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Поставки_товарів">
+              <PropertyRef Name="код_Товару" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставки_товарів_Контер_агенти1">
+          <End Role="Контер_агенти" Type="Self.Контер_агенти" Multiplicity="0..1" />
+          <End Role="Поставки_товарів" Type="Self.Поставки_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Контер_агенти">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Поставки_товарів">
+              <PropertyRef Name="код_Постачальника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставки_товарів_Працівники">
+          <End Role="Працівники" Type="Self.Працівники" Multiplicity="0..1" />
+          <End Role="Поставки_товарів" Type="Self.Поставки_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Працівники">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Поставки_товарів">
+              <PropertyRef Name="Код_працівника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Продаж_товарів_Контер_агенти">
+          <End Role="Контер_агенти" Type="Self.Контер_агенти" Multiplicity="0..1" />
+          <End Role="Продаж_товарів" Type="Self.Продаж_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Контер_агенти">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Продаж_товарів">
+              <PropertyRef Name="Код_контрагента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Продаж_товарів_Найменування_товарів">
+          <End Role="Найменування_товарів" Type="Self.Найменування_товарів" Multiplicity="0..1" />
+          <End Role="Продаж_товарів" Type="Self.Продаж_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Найменування_товарів">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Продаж_товарів">
+              <PropertyRef Name="Код_товару" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Продаж_товарів_Працівники">
+          <End Role="Працівники" Type="Self.Працівники" Multiplicity="0..1" />
+          <End Role="Продаж_товарів" Type="Self.Продаж_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Працівники">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Продаж_товарів">
+              <PropertyRef Name="Код_працівника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище parts_managerModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Контер_агенти" EntityType="Self.Контер_агенти" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Митниця" EntityType="Self.Митниця" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Найменування_товарів" EntityType="Self.Найменування_товарів" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Поставки_товарів" EntityType="Self.Поставки_товарів" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Працівники" EntityType="Self.Працівники" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Продаж_товарів" EntityType="Self.Продаж_товарів" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Митниця_Поставки_товарів" Association="Self.FK_Митниця_Поставки_товарів">
+            <End Role="Поставки_товарів" EntitySet="Поставки_товарів" />
+            <End Role="Митниця" EntitySet="Митниця" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Митниця_Працівники" Association="Self.FK_Митниця_Працівники">
+            <End Role="Працівники" EntitySet="Працівники" />
+            <End Role="Митниця" EntitySet="Митниця" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Найменування_товарів_Контер_агенти" Association="Self.FK_Найменування_товарів_Контер_агенти">
+            <End Role="Контер_агенти" EntitySet="Контер_агенти" />
+            <End Role="Найменування_товарів" EntitySet="Найменування_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставки_товарів_Контер_агенти" Association="Self.FK_Поставки_товарів_Контер_агенти">
+            <End Role="Найменування_товарів" EntitySet="Найменування_товарів" />
+            <End Role="Поставки_товарів" EntitySet="Поставки_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставки_товарів_Контер_агенти1" Association="Self.FK_Поставки_товарів_Контер_агенти1">
+            <End Role="Контер_агенти" EntitySet="Контер_агенти" />
+            <End Role="Поставки_товарів" EntitySet="Поставки_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставки_товарів_Працівники" Association="Self.FK_Поставки_товарів_Працівники">
+            <End Role="Працівники" EntitySet="Працівники" />
+            <End Role="Поставки_товарів" EntitySet="Поставки_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Продаж_товарів_Контер_агенти" Association="Self.FK_Продаж_товарів_Контер_агенти">
+            <End Role="Контер_агенти" EntitySet="Контер_агенти" />
+            <End Role="Продаж_товарів" EntitySet="Продаж_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Продаж_товарів_Найменування_товарів" Association="Self.FK_Продаж_товарів_Найменування_товарів">
+            <End Role="Найменування_товарів" EntitySet="Найменування_товарів" />
+            <End Role="Продаж_товарів" EntitySet="Продаж_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Продаж_товарів_Працівники" Association="Self.FK_Продаж_товарів_Працівники">
+            <End Role="Працівники" EntitySet="Працівники" />
+            <End Role="Продаж_товарів" EntitySet="Продаж_товарів" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="parts_managerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Контер_агенти">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Назва_товариства" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_телефону" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Фізична_адресса" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Юридична_адресса" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ЄРДПОУ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ІНН" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Єлектронна_пошта" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Особливі_примітки" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Найменування_товарів" Relationship="Self.FK_Найменування_товарів_Контер_агенти" FromRole="Контер_агенти" ToRole="Найменування_товарів" />
+          <NavigationProperty Name="Поставки_товарів" Relationship="Self.FK_Поставки_товарів_Контер_агенти1" FromRole="Контер_агенти" ToRole="Поставки_товарів" />
+          <NavigationProperty Name="Продаж_товарів" Relationship="Self.FK_Продаж_товарів_Контер_агенти" FromRole="Контер_агенти" ToRole="Продаж_товарів" />
+        </EntityType>
+        <EntityType Name="Митниця">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="Дата_реєстрації" Type="DateTime" Precision="0" />
+          <Property Name="Код_товару" Type="Int32" />
+          <Property Name="Код_працівника" Type="Int32" />
+          <Property Name="Відцоток_додаткової_вартості" Type="Int32" />
+          <Property Name="Кількість" Type="Int32" />
+          <Property Name="Строк_зберігання_СТЗ" Type="DateTime" Precision="0" />
+          <Property Name="Номер_рахунку" Type="Int32" />
+          <Property Name="Cтатус" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Поставки_товарів" Relationship="Self.FK_Митниця_Поставки_товарів" FromRole="Митниця" ToRole="Поставки_товарів" />
+          <NavigationProperty Name="Працівники" Relationship="Self.FK_Митниця_Працівники" FromRole="Митниця" ToRole="Працівники" />
+        </EntityType>
+        <EntityType Name="Найменування_товарів">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_товару" Type="Int32" />
+          <Property Name="Назва" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Каталожний_номер" Type="Int32" />
+          <Property Name="Ціна" Type="Double" />
+          <Property Name="Одиниця_виміру" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Вага" Type="Double" />
+          <Property Name="Країна_виробник" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Бренд" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Кількість_товарів" Type="Int32" />
+          <Property Name="Код_постачальника" Type="Int32" />
+          <Property Name="Примітка" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Контер_агенти" Relationship="Self.FK_Найменування_товарів_Контер_агенти" FromRole="Найменування_товарів" ToRole="Контер_агенти" />
+          <NavigationProperty Name="Поставки_товарів" Relationship="Self.FK_Поставки_товарів_Контер_агенти" FromRole="Найменування_товарів" ToRole="Поставки_товарів" />
+          <NavigationProperty Name="Продаж_товарів" Relationship="Self.FK_Продаж_товарів_Найменування_товарів" FromRole="Найменування_товарів" ToRole="Продаж_товарів" />
+        </EntityType>
+        <EntityType Name="Поставки_товарів">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Час_поставки_товару" Type="DateTime" Precision="0" />
+          <Property Name="код_Постачальника" Type="Int32" />
+          <Property Name="код_Товару" Type="Int32" />
+          <Property Name="Код_працівника" Type="Int32" />
+          <Property Name="Кількість" Type="Int32" />
+          <Property Name="Назва_компанії_перевізника" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Статус_митниці" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Контер_агенти" Relationship="Self.FK_Поставки_товарів_Контер_агенти1" FromRole="Поставки_товарів" ToRole="Контер_агенти" />
+          <NavigationProperty Name="Митниця" Relationship="Self.FK_Митниця_Поставки_товарів" FromRole="Поставки_товарів" ToRole="Митниця" />
+          <NavigationProperty Name="Найменування_товарів" Relationship="Self.FK_Поставки_товарів_Контер_агенти" FromRole="Поставки_товарів" ToRole="Найменування_товарів" />
+          <NavigationProperty Name="Працівники" Relationship="Self.FK_Поставки_товарів_Працівники" FromRole="Поставки_товарів" ToRole="Працівники" />
+        </EntityType>
+        <EntityType Name="Працівники">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ИПБ" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Дата_працевлаштування" Type="DateTime" Precision="0" />
+          <Property Name="Посада" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Зарплата" Type="Int32" />
+          <Property Name="Примітка" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Митниця" Relationship="Self.FK_Митниця_Працівники" FromRole="Працівники" ToRole="Митниця" />
+          <NavigationProperty Name="Поставки_товарів" Relationship="Self.FK_Поставки_товарів_Працівники" FromRole="Працівники" ToRole="Поставки_товарів" />
+          <NavigationProperty Name="Продаж_товарів" Relationship="Self.FK_Продаж_товарів_Працівники" FromRole="Працівники" ToRole="Продаж_товарів" />
+        </EntityType>
+        <EntityType Name="Продаж_товарів">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Дата_продажу" Type="DateTime" Precision="0" />
+          <Property Name="Код_контрагента" Type="Int32" />
+          <Property Name="Код_працівника" Type="Int32" />
+          <Property Name="Код_товару" Type="Int32" />
+          <Property Name="Кількість" Type="Int32" />
+          <Property Name="Cтатус_проплати" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Вартість_купленого" Type="Double" />
+          <Property Name="Cтатус_доставки" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Знижка" Type="Int32" />
+          <Property Name="Коментар" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Контер_агенти" Relationship="Self.FK_Продаж_товарів_Контер_агенти" FromRole="Продаж_товарів" ToRole="Контер_агенти" />
+          <NavigationProperty Name="Найменування_товарів" Relationship="Self.FK_Продаж_товарів_Найменування_товарів" FromRole="Продаж_товарів" ToRole="Найменування_товарів" />
+          <NavigationProperty Name="Працівники" Relationship="Self.FK_Продаж_товарів_Працівники" FromRole="Продаж_товарів" ToRole="Працівники" />
+        </EntityType>
+        <Association Name="FK_Найменування_товарів_Контер_агенти">
+          <End Role="Контер_агенти" Type="Self.Контер_агенти" Multiplicity="0..1" />
+          <End Role="Найменування_товарів" Type="Self.Найменування_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Контер_агенти">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Найменування_товарів">
+              <PropertyRef Name="Код_постачальника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставки_товарів_Контер_агенти1">
+          <End Role="Контер_агенти" Type="Self.Контер_агенти" Multiplicity="0..1" />
+          <End Role="Поставки_товарів" Type="Self.Поставки_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Контер_агенти">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Поставки_товарів">
+              <PropertyRef Name="код_Постачальника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Продаж_товарів_Контер_агенти">
+          <End Role="Контер_агенти" Type="Self.Контер_агенти" Multiplicity="0..1" />
+          <End Role="Продаж_товарів" Type="Self.Продаж_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Контер_агенти">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Продаж_товарів">
+              <PropertyRef Name="Код_контрагента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Митниця_Поставки_товарів">
+          <End Role="Поставки_товарів" Type="Self.Поставки_товарів" Multiplicity="0..1" />
+          <End Role="Митниця" Type="Self.Митниця" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Поставки_товарів">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Митниця">
+              <PropertyRef Name="Код_товару" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Митниця_Працівники">
+          <End Role="Працівники" Type="Self.Працівники" Multiplicity="0..1" />
+          <End Role="Митниця" Type="Self.Митниця" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Працівники">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Митниця">
+              <PropertyRef Name="Код_працівника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставки_товарів_Контер_агенти">
+          <End Role="Найменування_товарів" Type="Self.Найменування_товарів" Multiplicity="0..1" />
+          <End Role="Поставки_товарів" Type="Self.Поставки_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Найменування_товарів">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Поставки_товарів">
+              <PropertyRef Name="код_Товару" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Продаж_товарів_Найменування_товарів">
+          <End Role="Найменування_товарів" Type="Self.Найменування_товарів" Multiplicity="0..1" />
+          <End Role="Продаж_товарів" Type="Self.Продаж_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Найменування_товарів">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Продаж_товарів">
+              <PropertyRef Name="Код_товару" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставки_товарів_Працівники">
+          <End Role="Працівники" Type="Self.Працівники" Multiplicity="0..1" />
+          <End Role="Поставки_товарів" Type="Self.Поставки_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Працівники">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Поставки_товарів">
+              <PropertyRef Name="Код_працівника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Продаж_товарів_Працівники">
+          <End Role="Працівники" Type="Self.Працівники" Multiplicity="0..1" />
+          <End Role="Продаж_товарів" Type="Self.Продаж_товарів" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Працівники">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Продаж_товарів">
+              <PropertyRef Name="Код_працівника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="parts_managerEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Контер_агенти" EntityType="Self.Контер_агенти" />
+          <EntitySet Name="Митниця" EntityType="Self.Митниця" />
+          <EntitySet Name="Найменування_товарів" EntityType="Self.Найменування_товарів" />
+          <EntitySet Name="Поставки_товарів" EntityType="Self.Поставки_товарів" />
+          <EntitySet Name="Працівники" EntityType="Self.Працівники" />
+          <EntitySet Name="Продаж_товарів" EntityType="Self.Продаж_товарів" />
+          <AssociationSet Name="FK_Найменування_товарів_Контер_агенти" Association="Self.FK_Найменування_товарів_Контер_агенти">
+            <End Role="Контер_агенти" EntitySet="Контер_агенти" />
+            <End Role="Найменування_товарів" EntitySet="Найменування_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставки_товарів_Контер_агенти1" Association="Self.FK_Поставки_товарів_Контер_агенти1">
+            <End Role="Контер_агенти" EntitySet="Контер_агенти" />
+            <End Role="Поставки_товарів" EntitySet="Поставки_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Продаж_товарів_Контер_агенти" Association="Self.FK_Продаж_товарів_Контер_агенти">
+            <End Role="Контер_агенти" EntitySet="Контер_агенти" />
+            <End Role="Продаж_товарів" EntitySet="Продаж_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Митниця_Поставки_товарів" Association="Self.FK_Митниця_Поставки_товарів">
+            <End Role="Поставки_товарів" EntitySet="Поставки_товарів" />
+            <End Role="Митниця" EntitySet="Митниця" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Митниця_Працівники" Association="Self.FK_Митниця_Працівники">
+            <End Role="Працівники" EntitySet="Працівники" />
+            <End Role="Митниця" EntitySet="Митниця" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставки_товарів_Контер_агенти" Association="Self.FK_Поставки_товарів_Контер_агенти">
+            <End Role="Найменування_товарів" EntitySet="Найменування_товарів" />
+            <End Role="Поставки_товарів" EntitySet="Поставки_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Продаж_товарів_Найменування_товарів" Association="Self.FK_Продаж_товарів_Найменування_товарів">
+            <End Role="Найменування_товарів" EntitySet="Найменування_товарів" />
+            <End Role="Продаж_товарів" EntitySet="Продаж_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставки_товарів_Працівники" Association="Self.FK_Поставки_товарів_Працівники">
+            <End Role="Працівники" EntitySet="Працівники" />
+            <End Role="Поставки_товарів" EntitySet="Поставки_товарів" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Продаж_товарів_Працівники" Association="Self.FK_Продаж_товарів_Працівники">
+            <End Role="Працівники" EntitySet="Працівники" />
+            <End Role="Продаж_товарів" EntitySet="Продаж_товарів" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище parts_managerModelContainer" CdmEntityContainer="parts_managerEntities1">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="parts_managerModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Контер_агенти">
+            <EntityTypeMapping TypeName="parts_managerModel.Контер_агенти">
+              <MappingFragment StoreEntitySet="Контер_агенти">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="Назва_товариства" ColumnName="Назва_товариства" />
+                <ScalarProperty Name="Номер_телефону" ColumnName="Номер_телефону" />
+                <ScalarProperty Name="Фізична_адресса" ColumnName="Фізична_адресса" />
+                <ScalarProperty Name="Юридична_адресса" ColumnName="Юридична_адресса" />
+                <ScalarProperty Name="ЄРДПОУ" ColumnName="ЄРДПОУ" />
+                <ScalarProperty Name="ІНН" ColumnName="ІНН" />
+                <ScalarProperty Name="Єлектронна_пошта" ColumnName="Єлектронна_пошта" />
+                <ScalarProperty Name="Особливі_примітки" ColumnName="Особливі_примітки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Митниця">
+            <EntityTypeMapping TypeName="parts_managerModel.Митниця">
+              <MappingFragment StoreEntitySet="Митниця">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="Дата_реєстрації" ColumnName="Дата_реєстрації" />
+                <ScalarProperty Name="Код_товару" ColumnName="Код_товару" />
+                <ScalarProperty Name="Код_працівника" ColumnName="Код_працівника" />
+                <ScalarProperty Name="Відцоток_додаткової_вартості" ColumnName="Відцоток_додаткової_вартості" />
+                <ScalarProperty Name="Кількість" ColumnName="Кількість" />
+                <ScalarProperty Name="Строк_зберігання_СТЗ" ColumnName="Строк_зберігання_СТЗ" />
+                <ScalarProperty Name="Номер_рахунку" ColumnName="Номер_рахунку" />
+                <ScalarProperty Name="Cтатус" ColumnName="Cтатус" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Найменування_товарів">
+            <EntityTypeMapping TypeName="parts_managerModel.Найменування_товарів">
+              <MappingFragment StoreEntitySet="Найменування_товарів">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="Код_товару" ColumnName="Код_товару" />
+                <ScalarProperty Name="Назва" ColumnName="Назва" />
+                <ScalarProperty Name="Каталожний_номер" ColumnName="Каталожний_номер" />
+                <ScalarProperty Name="Ціна" ColumnName="Ціна" />
+                <ScalarProperty Name="Одиниця_виміру" ColumnName="Одиниця_виміру" />
+                <ScalarProperty Name="Вага" ColumnName="Вага" />
+                <ScalarProperty Name="Країна_виробник" ColumnName="Країна_виробник" />
+                <ScalarProperty Name="Бренд" ColumnName="Бренд" />
+                <ScalarProperty Name="Кількість_товарів" ColumnName="Кількість_товарів" />
+                <ScalarProperty Name="Код_постачальника" ColumnName="Код_постачальника" />
+                <ScalarProperty Name="Примітка" ColumnName="Примітка" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Поставки_товарів">
+            <EntityTypeMapping TypeName="parts_managerModel.Поставки_товарів">
+              <MappingFragment StoreEntitySet="Поставки_товарів">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="Час_поставки_товару" ColumnName="Час_поставки_товару" />
+                <ScalarProperty Name="код_Постачальника" ColumnName="код_Постачальника" />
+                <ScalarProperty Name="код_Товару" ColumnName="код_Товару" />
+                <ScalarProperty Name="Код_працівника" ColumnName="Код_працівника" />
+                <ScalarProperty Name="Кількість" ColumnName="Кількість" />
+                <ScalarProperty Name="Назва_компанії_перевізника" ColumnName="Назва_компанії_перевізника" />
+                <ScalarProperty Name="Статус_митниці" ColumnName="Статус_митниці" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Працівники">
+            <EntityTypeMapping TypeName="parts_managerModel.Працівники">
+              <MappingFragment StoreEntitySet="Працівники">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="ИПБ" ColumnName="ИПБ" />
+                <ScalarProperty Name="Дата_працевлаштування" ColumnName="Дата_працевлаштування" />
+                <ScalarProperty Name="Посада" ColumnName="Посада" />
+                <ScalarProperty Name="Зарплата" ColumnName="Зарплата" />
+                <ScalarProperty Name="Примітка" ColumnName="Примітка" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Продаж_товарів">
+            <EntityTypeMapping TypeName="parts_managerModel.Продаж_товарів">
+              <MappingFragment StoreEntitySet="Продаж_товарів">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="Дата_продажу" ColumnName="Дата_продажу" />
+                <ScalarProperty Name="Код_контрагента" ColumnName="Код_контрагента" />
+                <ScalarProperty Name="Код_працівника" ColumnName="Код_працівника" />
+                <ScalarProperty Name="Код_товару" ColumnName="Код_товару" />
+                <ScalarProperty Name="Кількість" ColumnName="Кількість" />
+                <ScalarProperty Name="Cтатус_проплати" ColumnName="Cтатус_проплати" />
+                <ScalarProperty Name="Вартість_купленого" ColumnName="Вартість_купленого" />
+                <ScalarProperty Name="Cтатус_доставки" ColumnName="Cтатус_доставки" />
+                <ScalarProperty Name="Знижка" ColumnName="Знижка" />
+                <ScalarProperty Name="Коментар" ColumnName="Коментар" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
