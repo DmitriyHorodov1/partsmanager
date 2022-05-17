@@ -45,9 +45,10 @@ namespace manager_parts_0._1
             
         }
 
-        private void warehousePage_Click(object sender, RoutedEventArgs e)
+        private void emploeesPage_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.Content = new empoleesPage();
         }
     }
 }

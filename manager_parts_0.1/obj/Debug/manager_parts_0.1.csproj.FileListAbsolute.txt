@@ -62,3 +62,7 @@ C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\MainPa
 C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\MainPage.baml
 C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\addEditGoodsPage.g.cs
 C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\addEditGoodsPage.baml
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\empoleesPage.g.cs
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\empoleesPage.baml
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditEmploees.g.cs
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditEmploees.baml

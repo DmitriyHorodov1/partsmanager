@@ -146,6 +146,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddEditEmploees.xaml.cs">
+      <DependentUpon>AddEditEmploees.xaml</DependentUpon>
+    </Compile>
     <Compile Include="addEditGoodsPage.xaml.cs">
       <DependentUpon>addEditGoodsPage.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,9 @@
     </Compile>
     <Compile Include="Agent.Page.xaml.cs">
       <DependentUpon>Agent.Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="empoleesPage.xaml.cs">
+      <DependentUpon>empoleesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="goodsPage.xaml.cs">
       <DependentUpon>goodsPage.xaml</DependentUpon>
@@ -187,6 +193,10 @@
     <Compile Include="Продаж_товарів.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="AddEditEmploees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="addEditGoodsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -196,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Agent.Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="empoleesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

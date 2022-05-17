@@ -6,19 +6,19 @@
       xmlns:local="clr-namespace:manager_parts_0._1"
       mc:Ignorable="d" 
        d:DesignWidth="1080"
-      Title="MainPage" Width="1080" Background="White" >
+      Title="MainPage" Width="1080" Background="White" Height="800" >
 
     <Grid>
-        <Button x:Name="agentPage"  Click="agentPage_Click" Margin="32,30,963,341.6">
+        <Button x:Name="agentPage"  Click="agentPage_Click" Margin="32,30,963,670">
             <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\agents.png"></Image>
         </Button>
 
-        <Button x:Name="goodsPage" Click="goodsPage_Click" Margin="137,30,852,341.6" >
+        <Button x:Name="goodsPage" Click="goodsPage_Click" Margin="137,30,852,670" >
             <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\goods.png"></Image>
         </Button>
 
-        <Button x:Name="warehousePage" Click="warehousePage_Click" Margin="249,30,746,341.6"  >
-            <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\warehouse.png" RenderTransformOrigin="0.508,0.534"></Image>
+        <Button x:Name="emploeesPage" Click="emploeesPage_Click" Margin="249,30,746,670"  >
+            <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\emploees.png" RenderTransformOrigin="0.508,0.534"></Image>
         </Button>
     </Grid>
 </Page>
