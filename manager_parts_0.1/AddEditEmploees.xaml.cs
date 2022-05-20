@@ -51,16 +51,16 @@ namespace manager_parts_0._1
             StringBuilder errors = new StringBuilder();
 
             if (string.IsNullOrWhiteSpace(працівники.ИПБ))
-                errors.AppendLine("Вкажіть назву товариства");
+                errors.AppendLine("Вкажіть назву имя");
 
             if (string.IsNullOrEmpty(працівники.Посада))
-                errors.AppendLine("Вкажіть номер телефону");
+                errors.AppendLine("Вкажіть посаду");
 
             if (працівники.Дата_працевлаштування == null )
-                errors.AppendLine("Вкажіть фізичну адресу товариства");
+                errors.AppendLine("Вкажіть дату працевлаштування");
 
             if (працівники.Зарплата < 100 || працівники.Зарплата > 9999999)
-                errors.AppendLine("Вкажіть юридичну адресу товариства");
+                errors.AppendLine("Вкажіть зарплату");
 
            
             if (errors.Length > 0)

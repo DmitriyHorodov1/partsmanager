@@ -50,5 +50,11 @@ namespace manager_parts_0._1
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.Content = new empoleesPage();
         }
+
+        private void suppliesPage_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.Content = new suppliesPage();
+        }
     }
 }

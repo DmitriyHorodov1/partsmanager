@@ -20,5 +20,9 @@
         <Button x:Name="emploeesPage" Click="emploeesPage_Click" Margin="249,30,746,670"  >
             <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\emploees.png" RenderTransformOrigin="0.508,0.534"></Image>
         </Button>
+
+        <Button  x:Name="suppliesPage" Click="suppliesPage_Click" Margin="355,30,645,670">
+            <Image   Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\supplies.png"></Image>
+        </Button>
     </Grid>
 </Page>
