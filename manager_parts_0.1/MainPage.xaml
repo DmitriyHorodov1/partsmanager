@@ -24,5 +24,9 @@
         <Button  x:Name="suppliesPage" Click="suppliesPage_Click" Margin="355,30,645,670">
             <Image   Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\supplies.png"></Image>
         </Button>
+
+        <Button x:Name="salePage" Click="salePage_Click"  Margin="470,35,525,670" RenderTransformOrigin="1.005,-0.837">
+            <Image   Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\sale.png"></Image>
+        </Button>
     </Grid>
 </Page>

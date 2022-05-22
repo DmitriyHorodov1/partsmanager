@@ -70,3 +70,7 @@ C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\suppli
 C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\suppliesPage.baml
 C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditsuppliesPage.g.cs
 C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditsuppliesPage.baml
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\salePage.g.cs
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\salePage.baml
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditSale.g.cs
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditSale.baml

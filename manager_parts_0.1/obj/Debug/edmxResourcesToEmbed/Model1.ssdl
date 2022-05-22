@@ -83,7 +83,7 @@
     <Key>
       <PropertyRef Name="code" />
     </Key>
-    <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Дата_продажу" Type="date" />
     <Property Name="Код_контрагента" Type="int" />
     <Property Name="Код_працівника" Type="int" />

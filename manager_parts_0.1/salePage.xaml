@@ -1,14 +1,14 @@
-﻿<Page x:Class="manager_parts_0._1.suppliesPage"
+﻿<Page x:Class="manager_parts_0._1.salePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:manager_parts_0._1"
       mc:Ignorable="d" 
-      d:DesignHeight="450"
-      Title="suppliesPage" Width="1300" IsVisibleChanged="Page_IsVisibleChanged">
+      d:DesignHeight="450" d:DesignWidth="1300"
+      Title="salePage" IsVisibleChanged="Page_IsVisibleChanged" >
 
-    <Grid Margin="0,-20,0,-0.4" Height="470" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="1375">
+    <Grid Margin="0,-20,0,-0.4" Height="470" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="1375"  >
         <Grid.RowDefinitions>
             <RowDefinition Height ="350" />
             <RowDefinition Height="120"/>
@@ -27,13 +27,16 @@
             </DataGrid.RenderTransform>
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Час_поставки_товару" Binding="{Binding Час_поставки_товару}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="код_Постачальника" Binding="{Binding код_Постачальника }" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="код_Товару" Binding="{Binding код_Товару }" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Код_працівника" Binding="{Binding Код_працівника}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата_продажу" Binding="{Binding Дата_продажу}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Код_контрагента" Binding="{Binding Код_контрагента }" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Код_працівника" Binding="{Binding Код_працівника }" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Код_товару" Binding="{Binding Код_товару}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кількість" Binding="{Binding Кількість}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Назва_компанії_перевізника"  Binding="{Binding Назва_компанії_перевізника}" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Статус_митниці"  Binding="{Binding Статус_митниці}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Cтатус_проплати"  Binding="{Binding Cтатус_проплати}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Вартість_купленого"  Binding="{Binding Вартість_купленого}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Кількість" Binding="{Binding Cтатус_доставки}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Знижка"  Binding="{Binding Знижка}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Коментар"  Binding="{Binding Коментар}" ></DataGridTextColumn>
 
 
                 <DataGridTemplateColumn Width="auto">
@@ -47,14 +50,14 @@
         </DataGrid>
         <Button Content="Додати"   HorizontalAlignment="Right" Name="BtnAdd" Click="BtnAdd_Click" Margin="0,29.6,1070,0" Width="98" Grid.Row="1" Height="50" VerticalAlignment="Top"/>
         <Button Content="Видалити" HorizontalAlignment="Right" Name="BtnDelete" Click="BtnDelete_Click" Margin="0,0,62,34.4" Width="98" Grid.Row="1" Height="50" VerticalAlignment="Bottom"/>
-        <TextBlock Text="Пошук" Margin="0,350,605,0" Grid.RowSpan="2" Height="33" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
-        <ComboBox Name="suppliesList" SelectionChanged="suppliesList_SelectionChanged" Margin="0,59.6,399,0" Grid.Row="1" HorizontalAlignment="Right" Width="421" Height="30" VerticalAlignment="Top">
-            <ComboBoxItem>Час_поставки_товару</ComboBoxItem>
-            <ComboBoxItem>код_Постачальника</ComboBoxItem>
-            <ComboBoxItem>код_Товару</ComboBoxItem>
+        <TextBlock Text="Пошук" Margin="0,1.6,695,0" Height="33" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Row="1"/>
+        <ComboBox Name="saleList" SelectionChanged="saleList_SelectionChanged" Margin="0,59.6,399,0" Grid.Row="1" HorizontalAlignment="Right" Width="421" Height="30" VerticalAlignment="Top">
+            <ComboBoxItem>Дата_продажу</ComboBoxItem>
+            <ComboBoxItem>Код_товару</ComboBoxItem>
+            <ComboBoxItem>Cтатус_проплати</ComboBoxItem>
             <ComboBoxItem>Код_працівника</ComboBoxItem>
-            <ComboBoxItem>Назва_компанії_перевізника</ComboBoxItem>
-            <ComboBoxItem>Статус_митниці</ComboBoxItem>
+            <ComboBoxItem>Коментар</ComboBoxItem>
+            <ComboBoxItem>Код_контрагента</ComboBoxItem>
 
 
         </ComboBox>

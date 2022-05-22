@@ -14,7 +14,7 @@ namespace manager_parts_0._1
     
     public partial class Продаж_товарів
     {
-        public string code { get; set; }
+        public int code { get; set; }
         public Nullable<System.DateTime> Дата_продажу { get; set; }
         public Nullable<int> Код_контрагента { get; set; }
         public Nullable<int> Код_працівника { get; set; }

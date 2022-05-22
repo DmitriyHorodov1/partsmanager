@@ -1,0 +1,73 @@
+﻿<Page x:Class="manager_parts_0._1.AddEditSale"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  
+      xmlns:local="clr-namespace:manager_parts_0._1"
+      
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditSale"  Height="685"  Background="Yellow"
+       >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*" />
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="41*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+
+
+
+
+
+        </Grid.RowDefinitions>
+
+        <TextBlock  FontSize="15" Text=" Дата_продажу" Margin="10,12.4,20,18" Grid.Row="1"   />
+        <TextBlock FontSize="15" Text="Код_контрагента" Margin="20,17.2,35,13.4" Grid.Row="2"  />
+        <TextBlock  FontSize="15" Text="Код_працівника" Margin="20,6.6,10,21" Grid.Row="3"   />
+        <TextBlock  FontSize="15" Text="Код_товару" Margin="16,3.2,3,1.2" Grid.Row="4"  />
+
+        <TextBlock   FontSize="15" Text="Кількість" Margin="9.8,2.4,30.2,43" Grid.Row="1" Grid.Column="2"  />
+        <TextBlock  FontSize="15" Text=" Cтатус_проплати" Margin="26,5.4,15,9.2" Grid.Row="5"  />
+        <TextBlock  FontSize="15" Text="Вартість_купленого" Margin="10,2.8,230.2,47.8" Grid.Row="6" Grid.ColumnSpan="2"  />
+        <TextBlock  FontSize="15" Text="Cтатус_доставки" Grid.Column="2" Margin="14.8,25.2,25.2,29.4" Grid.Row="2"  />
+        <TextBlock  FontSize="15" Text="Знижка" Grid.Column="2" Margin="9.8,30.6,30.2,24" Grid.Row="3"  />
+        <TextBlock  FontSize="15" Text="Коментар" Grid.Column="2" Margin="9.8,23,30.2,31.6" Grid.Row="4"  />
+
+
+
+        <TextBox  Text="{Binding Дата_продажу}" Grid.Column="1" Margin="40,1.6,30.2,56.8" Grid.Row="1" />
+        <ComboBox  x:Name="emploeers" SelectedItem="{Binding Код_працівника}" Grid.Column="1" Margin="45,5.6,30.2,62" Grid.Row="3" />
+        <ComboBox  x:Name="suppliers" SelectedItem="{Binding Код_контрагента}" Grid.Column="1" Margin="45,23.2,30.2,34.4" Grid.Row="2" />
+        <ComboBox   Text="{Binding Cтатус_проплати}" Grid.Column="1" Margin="40,4,25.2,73.2" Grid.Row="5" >
+            <ComboBoxItem>Проплачено</ComboBoxItem>
+            <ComboBoxItem>НеПроплачено</ComboBoxItem>
+        </ComboBox>
+        <TextBox  Text="{Binding Вартість_купленого}" Grid.Column="1" Margin="40,3.4,40.2,70.4" Grid.Row="6" />
+        <TextBox   Text="{Binding Кількість}" Grid.Column="3" Margin="6.8,6.4,20,51.4" Grid.Row="1" >
+        </TextBox>
+        <ComboBox  x:Name="goods" SelectedItem="{Binding Код_товару}" Grid.Column="1" Margin="40,13,25.2,49.6" Grid.Row="4"  />
+        <ComboBox Text="{Binding  Cтатус_доставки}" Grid.Column="3" Margin="14.8,15.2,25,49.4" Grid.Row="2" >
+            <ComboBoxItem>Доставлено</ComboBoxItem>
+            <ComboBoxItem>В дорозі</ComboBoxItem>
+        </ComboBox>
+
+        <TextBox  Text="{Binding  Знижка }" Grid.Column="3" Margin="24.8,26.6,35,32" Grid.Row="3" />
+
+        <Button Content="Зберегти "  Name="BtnSave" Click="BtnSave_Click" Margin="5,25,10,23.6" />
+    </Grid>
+</Page>

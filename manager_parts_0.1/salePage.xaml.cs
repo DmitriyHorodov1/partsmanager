@@ -16,14 +16,17 @@ using System.Windows.Shapes;
 namespace manager_parts_0._1
 {
     /// <summary>
-    /// Логика взаимодействия для suppliesPage.xaml
+    /// Логика взаимодействия для salePage.xaml
     /// </summary>
-    public partial class suppliesPage : Page
+    public partial class salePage : Page
     {
+
 
         public string search; // строка поиска
         public string type; // поле поиска
-        public suppliesPage()
+
+
+        public salePage()
         {
             InitializeComponent();
         }
@@ -33,39 +36,37 @@ namespace manager_parts_0._1
             if (Visibility == Visibility.Visible)
             {
                 parts_managerEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                suppliesPAGE.ItemsSource = parts_managerEntities1.GetContext().Поставки_товарів.ToList();
+                suppliesPAGE.ItemsSource = parts_managerEntities1.GetContext().Продаж_товарів.ToList();
             }
-
-
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            var removeAgent = (sender as Button).DataContext as Поставки_товарів;
+            var saleEdit = (sender as Button).DataContext as Продаж_товарів;
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.Content = new AddEditsuppliesPage(removeAgent);
+            mainWindow.Content = new AddEditSale(saleEdit);
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.Content = new AddEditsuppliesPage(null);
+            mainWindow.Content = new AddEditSale(null);
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var suppliesToremove = suppliesPAGE.SelectedItems.Cast<Поставки_товарів>().ToList();
+            var suppliesToremove = suppliesPAGE.SelectedItems.Cast<Продаж_товарів>().ToList();
 
             if (MessageBox.Show($"Ви точно бажаєте видалити наступні {suppliesToremove.Count()} елементів ?", "Увага",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    parts_managerEntities1.GetContext().Поставки_товарів.RemoveRange(suppliesToremove);
+                    parts_managerEntities1.GetContext().Продаж_товарів.RemoveRange(suppliesToremove);
                     parts_managerEntities1.GetContext().SaveChanges();
                     MessageBox.Show("Дані видалені ");
 
-                   suppliesPAGE.ItemsSource = parts_managerEntities1.GetContext().Поставки_товарів.ToList();
+                    suppliesPAGE.ItemsSource = parts_managerEntities1.GetContext().Продаж_товарів.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -73,10 +74,9 @@ namespace manager_parts_0._1
                 }
             }
 
-
         }
 
-        private void suppliesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void saleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
@@ -90,9 +90,7 @@ namespace manager_parts_0._1
 
                 search = searchValue.Text;
 
-                suppliesPAGE.ItemsSource = parts_managerEntities1.GetContext().Database.SqlQuery<Поставки_товарів>($" select * from Поставки_товарів where {type} LIKE '{search}%' ").ToList();
-
-
+                suppliesPAGE.ItemsSource = parts_managerEntities1.GetContext().Database.SqlQuery<Продаж_товарів>($" select * from Продаж_товарів where {type} LIKE '{search}%' ").ToList();
 
             }
             catch (Exception ex)
@@ -117,15 +115,13 @@ namespace manager_parts_0._1
 
         private void btn_reaload_Click(object sender, RoutedEventArgs e)
         {
-            suppliesPAGE.ItemsSource = parts_managerEntities1.GetContext().Поставки_товарів.ToList();
+            suppliesPAGE.ItemsSource = parts_managerEntities1.GetContext().Продаж_товарів.ToList();
         }
 
         private void gotoMainpage_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.Content = new MainPage();
-
-
         }
     }
 }
