@@ -33,7 +33,7 @@
           <Key>
             <PropertyRef Name="code" />
           </Key>
-          <Property Name="code" Type="int" Nullable="false" />
+          <Property Name="code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Дата_реєстрації" Type="date" />
           <Property Name="Код_товару" Type="int" />
           <Property Name="Код_працівника" Type="int" />
@@ -289,7 +289,7 @@
           <Key>
             <PropertyRef Name="code" />
           </Key>
-          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Дата_реєстрації" Type="DateTime" Precision="0" />
           <Property Name="Код_товару" Type="Int32" />
           <Property Name="Код_працівника" Type="Int32" />

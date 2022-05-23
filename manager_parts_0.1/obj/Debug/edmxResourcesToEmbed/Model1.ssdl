@@ -28,7 +28,7 @@
     <Key>
       <PropertyRef Name="code" />
     </Key>
-    <Property Name="code" Type="int" Nullable="false" />
+    <Property Name="code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Дата_реєстрації" Type="date" />
     <Property Name="Код_товару" Type="int" />
     <Property Name="Код_працівника" Type="int" />

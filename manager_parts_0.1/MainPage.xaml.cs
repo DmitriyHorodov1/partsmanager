@@ -62,5 +62,11 @@ namespace manager_parts_0._1
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.Content = new salePage();
         }
+
+        private void customsPage_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.Content = new customsPage();
+        }
     }
 }

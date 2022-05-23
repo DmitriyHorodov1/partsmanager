@@ -30,6 +30,7 @@ namespace manager_parts_0._1
 
             return _context;
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

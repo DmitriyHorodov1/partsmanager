@@ -74,3 +74,7 @@ C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\salePa
 C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\salePage.baml
 C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditSale.g.cs
 C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditSale.baml
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\customsPage.g.cs
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\customsPage.baml
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditCustoms.g.cs
+C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\obj\Debug\AddEditCustoms.baml

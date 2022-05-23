@@ -67,6 +67,7 @@
         </ComboBox>
 
         <TextBox  Text="{Binding  Знижка }" Grid.Column="3" Margin="24.8,26.6,35,32" Grid.Row="3" />
+        <TextBox  Text="{Binding Коментар}" Grid.Column="3" Margin="19.8,22,20,39.6" Grid.Row="4" />
 
         <Button Content="Зберегти "  Name="BtnSave" Click="BtnSave_Click" Margin="5,25,10,23.6" />
     </Grid>

@@ -10,23 +10,29 @@
 
     <Grid>
         <Button x:Name="agentPage"  Click="agentPage_Click" Margin="32,30,963,670">
-            <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\agents.png"></Image>
+            <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\seller.png"></Image>
         </Button>
 
         <Button x:Name="goodsPage" Click="goodsPage_Click" Margin="137,30,852,670" >
-            <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\goods.png"></Image>
+            <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\box.png"></Image>
         </Button>
 
         <Button x:Name="emploeesPage" Click="emploeesPage_Click" Margin="249,30,746,670"  >
-            <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\emploees.png" RenderTransformOrigin="0.508,0.534"></Image>
+            <Image Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\workers.png" RenderTransformOrigin="0.508,0.534"></Image>
         </Button>
 
         <Button  x:Name="suppliesPage" Click="suppliesPage_Click" Margin="355,30,645,670">
-            <Image   Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\supplies.png"></Image>
+            <Image   Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\supplier.png"></Image>
         </Button>
 
         <Button x:Name="salePage" Click="salePage_Click"  Margin="470,35,525,670" RenderTransformOrigin="1.005,-0.837">
             <Image   Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\sale.png"></Image>
+        </Button>
+
+
+
+        <Button Margin="585,40,420,680" x:Name="customsPage" Click="customsPage_Click"  RenderTransformOrigin="0.803,0.688">
+            <Image   Source="C:\Users\olaol\source\repos\manager_parts_0.1\manager_parts_0.1\images\custom.png" Height="75" Width="75"></Image>
         </Button>
     </Grid>
 </Page>
